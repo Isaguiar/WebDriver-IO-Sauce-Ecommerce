@@ -11,7 +11,6 @@ describe('Adding two items to cart', () => {
         await LoginPage.login('standard_user', 'secret_sauce');
         await expect(SecurePage.flashAlert).not.toBeExisting();
         await HomePage.addToCart();
-        await $('.shopping_cart_badge').click();
         await expect($('.shopping_cart_badge')).toHaveText('2');
            
        });

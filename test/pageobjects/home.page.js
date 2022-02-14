@@ -13,6 +13,9 @@ class HomePage extends Page {
         return  $$('.btn_primary')[1];    
     }
 
+    get btnSubmit() {
+        return $('.shopping_cart_badge');
+    }
 
     async firstPrice() {
        const price = await this.firstAddButton.previousElement().getText();
@@ -35,11 +38,17 @@ class HomePage extends Page {
     async addToCart(){
         await this.firstAddButton.click();
         await this.secondAddButton.click();
+        await this.btnSubmit.click();
     }
 
     async firstId(){
         const id = await this.firstAddButton.getAttribute('id');
         return id;
+    }
+
+
+    open() {
+        return super.open('');
     }
 
 }
