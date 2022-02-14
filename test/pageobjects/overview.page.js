@@ -31,7 +31,7 @@ class OverviewPage extends Page {
     async netPrice(){
         const first = await this.tax();
         const second = await this.total();
-        const net= first + second;
+        const net= second - first;
         return '$'+net.toFixed(2);
     } 
 

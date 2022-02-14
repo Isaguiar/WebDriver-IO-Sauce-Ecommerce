@@ -6,7 +6,7 @@ import HomePage from '../pageobjects/home.page';
  
 describe('Adding two items to cart', () => {
 
-     it(' "My cart" should have two items', async () => {
+     it.skip(' "My cart" should have two items', async () => {
         await LoginPage.open();
         await LoginPage.login('standard_user', 'secret_sauce');
         await expect(SecurePage.flashAlert).not.toBeExisting();
