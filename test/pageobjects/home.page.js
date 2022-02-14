@@ -14,7 +14,7 @@ class HomePage extends Page {
     }
 
     get btnSubmit() {
-        return $('.shopping_cart_badge');
+        return $('.shopping_cart_link');
     }
 
     async firstPrice() {

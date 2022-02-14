@@ -5,27 +5,27 @@ import Page from './page';
 class OverviewPage extends Page {
  
     
-    get btnFinish(){
-        return $$('#finish')
-    }
 
+    get taxValue(){
+        // eslint-disable-next-line prettier/prettier
+        $('.summary_tax_label');    
+;   
+     }
 
-    async taxValue(){
-        const price =  $('.summary_tax_label');   
-    }
-
-    async totalPrice(){
-        const price =  $('.summary_total_label');    
+    get totalPrice(){
+        $('.summary_total_label');    
     }
     
     async tax() {
-       const price = await this.taxValue.getText();
-       return parseFloat(price.replace('$',''));
+        console.log(this.taxValue, 'tax');
+       let price = await this.taxValue;
+       price = await price.getText();
+       return parseFloat(price.replace('Tax: $',''));
      }
 
     async total() {
        const price = await this.totalPrice.getText();
-       return parseFloat(price.replace('$',''));
+       return parseFloat(price.replace('Item total: $',''));
      }
     
     async netPrice(){
@@ -34,10 +34,6 @@ class OverviewPage extends Page {
         const net= first + second;
         return '$'+net.toFixed(2);
     } 
-
-    async completeOrder(){
-        await this.btnFinish.click(); 
-    }
 
 
 }

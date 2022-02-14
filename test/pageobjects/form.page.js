@@ -21,12 +21,18 @@ class FormPage extends Page {
         return $('#continue');
     }
 
+    get btnCheckout(){
+        return $('#checkout');
+    }
+
    
-    async login (firstname, lastname, zipcode) {
-        await this.inputFirstName.setValue(username);
+    async sendData (firstname, lastname, zipcode) {
+        await this.btnCheckout.click();
+        await this.inputFirstName.setValue(firstname);
         await this.inputLastName.setValue(lastname);
         await this.inputZipCode.setValue(zipcode);
         await this.btnSubmit.click();
+
     }
 
    
