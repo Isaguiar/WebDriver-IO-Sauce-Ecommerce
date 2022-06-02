@@ -1,8 +1,8 @@
 name: scheduled-tests
 on: [push]
 env:
-  SAUCE_USERNAME: ${{secret.SAUCE_USERNAME}}
-  SAUCE_ACCESS_KEY: ${{secret.SAUCE_ACCESS_KEY}}
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
    
 jobs:
   test:
