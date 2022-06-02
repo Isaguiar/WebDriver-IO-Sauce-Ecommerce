@@ -13,14 +13,15 @@ jobs:
         with:
           node-version: '16'
       - run: npm install
-      - uses: saucelabs/saucectl-run-action@v1
-        with:
-          testing-environment: ""
-          concurrency: 10
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: logs
           path: logs
+      - uses: saucelabs/saucectl-run-action@v1
+        with:
+          testing-environment: ""
+          concurrency: 10
+     
     
       - run: npx wdio run wdio.conf.js
