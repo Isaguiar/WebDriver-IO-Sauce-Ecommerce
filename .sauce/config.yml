@@ -1,6 +1,9 @@
 apiVersion: v1alpha
 kind: puppeteer
 showConsoleLog: false
+defaults:
+  mode: docker
+  timeout: 15m
 sauce:
   region: us-west-1
   concurrency: 2
