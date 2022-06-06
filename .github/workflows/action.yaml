@@ -6,14 +6,14 @@ on:
       - "**"
   schedule:
     - cron: '00 10 * * 1'
-env:
-  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+    
+    env:
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
     steps:
       - name: Set start time
         run: echo "START_TIME=$(date +%s)" >> $GITHUB_ENV
@@ -27,6 +27,11 @@ jobs:
         with:
           name: logs
           path: logs
+
+      - uses: saucelabs/saucectl-run-action@v1
+        with:
+          testing-environment: ""
+          concurrency: 10    
   
       - run: npx wdio run wdio.conf.js
       
